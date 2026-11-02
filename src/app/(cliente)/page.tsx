@@ -1,16 +1,17 @@
-import { getCatalog, getCategories } from "@/lib/data";
-import { Catalog } from "./Catalog";
+import { Suspense } from "react";
+import { CatalogData, CatalogSkeleton } from "./CatalogData";
 import { CatalogHeader } from "./CatalogHeader";
 
-export default async function CatalogPage() {
-  const [products, categories] = await Promise.all([getCatalog(), getCategories()]);
+export default function CatalogPage() {
   return (
     <div className="flex flex-1 flex-col">
       <CatalogHeader
         title="Escolha seus sabores"
         subtitle="Você faz o pedido aqui e paga direto pra gente — Pix, cartão ou dinheiro."
       />
-      <Catalog products={products} categories={categories} />
+      <Suspense fallback={<CatalogSkeleton />}>
+        <CatalogData />
+      </Suspense>
     </div>
   );
 }
