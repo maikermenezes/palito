@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-acai: #3b1035;
+  --color-morango: #e8436b;
+  --color-manga: #ffb238;
+  --color-palito: #e2b98a;
+  --color-leite: #fff4f6;
+  --color-borda: #f2d9e0;
+  --color-borda-forte: #e6c3cf;
+  --color-linha: #f8e8ed;
+  --color-suave: #7a5a73;
+  --color-aviso: #fff3d1;
+  --color-perigo: #b4234a;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-fredoka), var(--font-dm-sans), sans-serif;
+}
+
+html {
+  background: var(--color-acai);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-leite);
+  color: var(--color-acai);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-manga);
+  outline-offset: 2px;
+}
+
+@utility field {
+  height: 3rem;
+  width: 100%;
+  min-width: 0;
+  border-radius: 14px;
+  border: 1px solid var(--color-borda-forte);
+  background: #fff;
+  padding: 0 14px;
+  font-size: 16px;
+  color: var(--color-acai);
+}
+
+@utility field-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@utility btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  border-radius: 18px;
+  background: var(--color-acai);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+@utility pb-safe {
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
